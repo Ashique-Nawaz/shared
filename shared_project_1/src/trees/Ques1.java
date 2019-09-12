@@ -8,11 +8,11 @@ public class Ques1 {
 	Node root;
 	public void controllerQues1(){
 		initBinaryTree();
-		System.out.println(businessLogic() ? "this Binary Tree is a Sum Tree" : "this Binary Tree is not a Sum Tree" );
+		businessLogic();
 	}
 
-	private boolean businessLogic() {
-		return isBinaryTreeSumTree(root);
+	private void businessLogic() {
+		System.out.println(isBinaryTreeSumTree(root) ? "this Binary Tree is a Sum Tree" : "this Binary Tree is not a Sum Tree" );
 	}
 
 	private boolean isBinaryTreeSumTree(Node currentRoot) {
