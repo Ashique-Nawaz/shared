@@ -15,7 +15,7 @@ public class Ques1 {
 		m_rows = inputArray.length;
 		m_max = m_rows > m_cols ? m_rows : m_cols;
 
-		int result = businessLogicQues1( 0, m_cols-1, inputArray, lostElement);
+		int result = businessLogic( 0, m_cols-1, inputArray, lostElement);
 		if(result != -1){
 			int col = result % m_max;
 			int row = result / m_max;
@@ -31,7 +31,7 @@ public class Ques1 {
 //	2  7  9 
 //	5  9  11
 	
-	private int businessLogicQues1(int i, int j, int[][] inputArray,
+	private int businessLogic(int i, int j, int[][] inputArray,
 			int lostElement) {
 		// top-right to bottom-right hi karna padega.
 
@@ -39,13 +39,13 @@ public class Ques1 {
 			return (m_max * i) + j;
 		} else if (inputArray[i][j] < lostElement) {
 			if (isValidCoordinate(i + 1, j)) {
-				return businessLogicQues1(i + 1, j, inputArray, lostElement);
+				return businessLogic(i + 1, j, inputArray, lostElement);
 			} else {
 				return -1;
 			}
 		} else if (inputArray[i][j] > lostElement) {
 			if(isValidCoordinate(i, j - 1)){
-				return businessLogicQues1(i, j - 1, inputArray, lostElement);
+				return businessLogic(i, j - 1, inputArray, lostElement);
 			} else  {
 				return -1;
 			}
