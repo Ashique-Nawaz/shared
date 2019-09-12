@@ -8,7 +8,7 @@ public class Ques1 {
 	Node root;
 	public void controllerQues1(){
 		initBinaryTree();
-		businessLogic();
+		System.out.println(businessLogic() ? "this Binary Tree is a Sum Tree" : "this Binary Tree is not a Sum Tree" );
 	}
 
 	private boolean businessLogic() {
@@ -16,29 +16,26 @@ public class Ques1 {
 	}
 
 	private boolean isBinaryTreeSumTree(Node currentRoot) {
-		int leftSubtreeSum = isBinaryTreeSumTree(currentRoot.leftChild);
-		int rightSubtreeSum = isBinaryTreeSumTree(currentRoot.rightChild);
-		return if((leftSubtreeSum + rightSubtreeSum)== currentRoot.data) true; else false;
+		return sumOfSubTrees(currentRoot) > -1;
 	}
 	
-	
-	fun(root){
-		lsts = fun(root.left);
-		rsts = fun(root.right);
-		
-		if(fun(lst)== -1 || fun(rst) == -1 ){
-			return false;
+	private int sumOfSubTrees(Node currentRoot) {
+		if(currentRoot.leftChild == null && currentRoot.rightChild == null) {
+			return currentRoot.data;
 		}
-		if(fun(lst)+fun(rst) == root.data) return true; else return false;
+		int leftSubtreeSum =  currentRoot.leftChild == null ? 0 : sumOfSubTrees(currentRoot.leftChild);
+		int rightSubtreeSum = currentRoot.rightChild == null ? 0 : sumOfSubTrees(currentRoot.rightChild);
+		return (leftSubtreeSum != -1 && rightSubtreeSum != -1 && (leftSubtreeSum + rightSubtreeSum) == currentRoot.data)
+				? (leftSubtreeSum + rightSubtreeSum + currentRoot.data)
+				: -1;
 	}
-	
-	
 
 	private void initBinaryTree() {
-		Node tree = root;
-		tree = new Node(26);
+		Node tree = new Node(26);
+		root = tree; 
 		tree.leftChild = new Node(10);
 		tree.rightChild = new Node(3);
+//		tree.rightChild = new Node(4);		// for not 
 		tree.leftChild.leftChild = new Node(6);
 		tree.leftChild.rightChild = new Node(4);
 		tree.rightChild.leftChild = new Node(1);
@@ -52,8 +49,6 @@ public class Ques1 {
 		
 		public Node(int data){
 			this.data = data;
-//			this.leftChild = lChild;
-//			this.rightChild = rChild;
 		}
 		
 	}

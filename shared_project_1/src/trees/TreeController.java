@@ -1,6 +1,6 @@
 package trees;
 
-import matrix.Ques1;
+import trees.Ques1;
 
 public class TreeController {
 
